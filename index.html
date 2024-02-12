@@ -66,6 +66,7 @@ crossorigin=""/>
     document.getElementById('formulario').style.display = 'block';
   });
 
+<<<<<<< HEAD
   document.getElementById('closeFormBtn').addEventListener('click', function() {
     document.getElementById('formulario').style.display = 'none';
     // Agrega un marcador en la ubicación donde se hace clic
@@ -83,6 +84,26 @@ crossorigin=""/>
   
   document.getElementById('cuadro').addEventListener('submit', function(event) {
     event.preventDefault();
+=======
+        document.getElementById('closeFormBtn').addEventListener('click', function () {
+            document.getElementById('formulario').style.display = 'none';
+        // Agrega un marcador en la ubicación donde se hace clic
+            map.on('click', function (e) {
+                var marker = L.marker(e.latlng).addTo(markersLayer);
+                marker.on('click', function () {
+                    selectedMarker = marker;
+                    if (confirm("¿Eliminar este marcador?")) {
+                        markersLayer.removeLayer(selectedMarker);
+                        selectedMarker = null;
+                    }
+                });
+            });
+        });
+        
+         // Valores de referencia en el Marcador
+        document.getElementById('cuadro').addEventListener('submit', function (event) {
+            event.preventDefault();
+>>>>>>> 34f4570 (Se modifica estructura)
 
     var descripcion = document.getElementById('descripcion').value;
     var direccion = document.getElementById('direccion').value;
