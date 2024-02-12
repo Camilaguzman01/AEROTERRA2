@@ -1,0 +1,28 @@
+
+
+  #formulario {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color:deeppink;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    color:beige;
+  }
+  #openFormBtn{
+    background-color: rgb(134, 10, 76);
+    border-color: rgb(134, 10, 76);
+  }
+  #closeFormBtn {
+    background-color: rgb(134, 10, 76);
+    border-color: rgb(134, 10, 76);
+  }
+
+  #map {
+    height: 900px;
+    width: 100%;
+  }
