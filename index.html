@@ -1,90 +1,79 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Crear Punto de Interés</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
-integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-crossorigin=""/>
-<link rel="stylesheet" href="estilo.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="descripcion" content="este es un sitio web parte de un proyecto">
+    <meta name="keywords" content="mapa,mapeo,puntos de interes,marcadores">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <link rel="stylesheet" href="estilo.css">
+
+    <title>Crear Punto de Interés</title>
+
 </head>
+
 <body>
- 
-<button id="openFormBtn" class="btn btn-primary">Crear Punto de Interés</button>
 
-<div id="formulario">
-  <h2>Nuevo Punto de Interés</h2>
-  <form id="cuadro">
-    <div class="form-group">
-      <label for="descripcion">Descripción:</label>
-      <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"  required>
-    </div>
-    <div class="form-group">
-      <label for="direccion">Dirección:</label>
-      <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección"  required>
-    </div>
-    <div class="form-group">
-      <label for="telefono">Número telefónico:</label>
-      <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" >
-    </div>
-    <div class="form-group">
-      <label for="coordenadas">Coordenadas:</label>
-      <input type="text" class="form-control" id="coordenadas" name="coordenadas" placeholder="Latitud, Longitud" required>
-    </div>
-    <div class="form-group">
-      <label for="categoria">Categoría:</label>
-      <select class="form-control" id="categoria" name="categoria" required>
-        <option value="">Selecciona una categoría</option>
-        <option value="Comercial">Comercial</option>
-        <option value="Residencial">Residencial</option>
-        <option value="Mixta">Mixta</option>
-      </select>
-    </div>
-    <button type="submit" id="openFormBtn" class="btn btn-primary">Crear</button>
-    <button type="button" id="closeFormBtn" class="btn btn-secondary">Cancelar</button>
-  </form>
-</div>
+    <button id="openFormBtn" class="btn btn-primary">Crear Punto de Interés</button>
 
-<div id="map"></div>
+    <div id="formulario">
+        <h2>Nuevo Punto de Interés</h2>
+        <form id="cuadro">
+            <div class="form-group">
+                <label for="descripcion">Descripción:</label>
+                <input type="text" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="direccion">Dirección:</label>
+                <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Dirección"
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="telefono">Número telefónico:</label>
+                <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono">
+            </div>
+            <div class="form-group">
+                <label for="coordenadas">Coordenadas:</label>
+                <input type="text" class="form-control" id="coordenadas" name="coordenadas"
+                    placeholder="Latitud, Longitud" required>
+            </div>
+            <div class="form-group">
+                <label for="categoria">Categoría:</label>
+                <select class="form-control" id="categoria" name="categoria" required>
+                    <option value="">Selecciona una categoría</option>
+                    <option value="Comercial">Comercial</option>
+                    <option value="Residencial">Residencial</option>
+                    <option value="Mixta">Mixta</option>
+                </select>
+            </div>
+            <button type="submit" id="openFormBtn" class="btn btn-primary">Crear</button>
+            <button type="button" id="closeFormBtn" class="btn btn-secondary">Cancelar</button>
+        </form>
+    </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"
+    <div id="map"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/leaflet.js"
         src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-search/2.9.3/leaflet-search.min.js"
         src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-ajax/2.1.0/leaflet.ajax.min.js">
     </script>
 
 
-<script>
-  var map = L.map('map').setView([-34.61315,  -58.37723],15); 
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+    <script>
+        var map = L.map('map').setView([-34.61315, -58.37723], 15);
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 
-  var markersLayer = L.layerGroup().addTo(map);
- 
+        var markersLayer = L.layerGroup().addTo(map);
 
-  document.getElementById('openFormBtn').addEventListener('click', function() {
-    document.getElementById('formulario').style.display = 'block';
-  });
+        // funciones de botones
+        document.getElementById('openFormBtn').addEventListener('click', function () {
+            document.getElementById('formulario').style.display = 'block';
+        });
 
-<<<<<<< HEAD
-  document.getElementById('closeFormBtn').addEventListener('click', function() {
-    document.getElementById('formulario').style.display = 'none';
-    // Agrega un marcador en la ubicación donde se hace clic
-    map.on('click', function(e) {  
-    var marker = L.marker(e.latlng).addTo(markersLayer);
-    marker.on('click', function() {
-        selectedMarker = marker;
-        if (confirm("¿Eliminar este marcador?")) {
-        markersLayer.removeLayer(selectedMarker);
-        selectedMarker = null;
-        }
-    });
-    });
-  });
-  
-  document.getElementById('cuadro').addEventListener('submit', function(event) {
-    event.preventDefault();
-=======
         document.getElementById('closeFormBtn').addEventListener('click', function () {
             document.getElementById('formulario').style.display = 'none';
         // Agrega un marcador en la ubicación donde se hace clic
@@ -103,36 +92,35 @@ crossorigin=""/>
          // Valores de referencia en el Marcador
         document.getElementById('cuadro').addEventListener('submit', function (event) {
             event.preventDefault();
->>>>>>> 34f4570 (Se modifica estructura)
 
-    var descripcion = document.getElementById('descripcion').value;
-    var direccion = document.getElementById('direccion').value;
-    var telefono = document.getElementById('telefono').value;
-    var coordenadas = document.getElementById('coordenadas').value;
-    var categoria = document.getElementById('categoria').value;
+            var descripcion = document.getElementById('descripcion').value;
+            var direccion = document.getElementById('direccion').value;
+            var telefono = document.getElementById('telefono').value;
+            var coordenadas = document.getElementById('coordenadas').value;
+            var categoria = document.getElementById('categoria').value;
 
-    var latLng = coordenadas.split(',');
-    var lat = parseFloat(latLng[0]);
-    var lng = parseFloat(latLng[1]);
+            var latLng = coordenadas.split(',');
+            var lat = parseFloat(latLng[0]);
+            var lng = parseFloat(latLng[1]);
 
-    var marker = L.marker(latLng).addTo(markersLayer);
-    marker.bindPopup('<b>Descripción:</b> ' + descripcion + '<br><b>Dirección:</b> ' + direccion + '<br><b>Número telefónico:</b> ' + telefono + '<br><b>Coordenadas:</b> ' + coordenadas + '<br><b>Categoría:</b> ' + categoria);
-    marker.on('click', function() {
-        selectedMarker = marker;
-        if (confirm("¿Eliminar este marcador?")) {
-        markersLayer.removeLayer(selectedMarker);
-        selectedMarker = null;
-        }
-    });
-    
-    document.getElementById('cuadro').reset();
-    document.getElementById('formulario').style.display = 'none';
-    
-   
-  });
+            var marker = L.marker(latLng).addTo(markersLayer);
+            marker.bindPopup('<b>Descripción:</b> ' + descripcion + '<br><b>Dirección:</b> ' + direccion + '<br><b>Número telefónico:</b> ' + telefono + '<br><b>Coordenadas:</b> ' + coordenadas + '<br><b>Categoría:</b> ' + categoria);
+            marker.on('click', function () {
+                selectedMarker = marker;
+                if (confirm("¿Eliminar este marcador?")) {
+                    markersLayer.removeLayer(selectedMarker);
+                    selectedMarker = null;
+                }
+            });
 
-  
-</script>
+            document.getElementById('cuadro').reset();
+            document.getElementById('formulario').style.display = 'none';
+
+
+        });
+
+
+    </script>
 
 
 </body>
